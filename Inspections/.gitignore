@@ -1,0 +1,12 @@
+Inspections\db.sqlite3
+
+
+Inspections/db.sqlite3
+
+./Inspections/db.sqlite3
+
+
+.\Inspections\db.sqlite3
+
+*.csv
+*.sqlite3

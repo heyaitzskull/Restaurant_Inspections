@@ -1,0 +1,80 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* ensures full viewport */
+  
+}
+
+main {
+  background-color: aliceblue;
+  width: 900px;
+  height: 700px;
+  border: 5px solid rgb(33, 55, 115);
+  border-radius: 20px;
+  align-items: center;    /* center horizontally */
+  justify-content: center;
+
+}
+
+h1 {
+    color: rgb(178, 103, 178);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 5%;
+    text-align: center;
+}
+h2 {
+    color: rgb(133, 71, 78);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+
+}
+.chicago-btn {
+    width: 300px;
+    height: 50px;
+    background-color: rgb(118, 198, 238);
+    font-size: large;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: 5px solid rgb(50, 50, 146);
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+}
+.chicago-btn:hover {
+    
+    background-color: rgb(95, 159, 192);
+    font-size: large;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: 5px solid rgb(8, 8, 22);
+    border-radius: 15px;
+    
+}
+
+.city-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.search-input {
+    display:flex; 
+    flex-direction: col;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+
+.restaurant {
+    margin-left: 50px;
+}

@@ -1,0 +1,49 @@
+{% extends 'base_layout.html'%}
+
+
+{% block title%}
+    Chicago Restaurant List
+{% endblock%}
+
+
+{% block content %}
+
+    <div class = "search-input">
+        <form action="{% url 'restaurants:chi' %}" method="get">
+            <input type="text" name="q" class="search" placeholder="Search name..." value="{{q}}">
+            <button class="search-btn"> Search </button>
+        </form>
+    </div>
+
+    {% for restaurant in page_obj %}
+        {# Each "restaurant" is a restaurant model object. #}
+        <div class="restaurant">
+            {# sending in the restaurant's ID to the views page so that the function can use it #}
+            <a href= "{% url 'restaurants:chi_rest' restaurant.id%}" method="post">
+                {{ restaurant.dba_name }}<br>
+            </a>
+            {% comment %} {{ restaurant.address }}, {{ restaurant.city }}, {{ restaurant.state }} {{ restaurant.zip }} {% endcomment %}
+        </div>
+        
+        <br>
+    {% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1{% if q %}&q={{ q }}{% endif %}">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}{% if q %}&q={{ q }}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if q %}&q={{ q }}{% endif %}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}{% if q %}&q={{ q }}{% endif %}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

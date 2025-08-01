@@ -1,0 +1,24 @@
+{% extends 'base_layout.html'%}
+
+{% block title %}
+
+Home
+
+{% endblock%}
+
+{% block content %}
+
+    <h1> Welcome to Restaurant Inspections </h1>
+    <h2> To start, choose your city </h2>
+
+    <section>
+        <div class='city-btns'>
+            <form action="{% url 'restaurants:chi' %}" method="post">
+                {% csrf_token %}
+                <button class="chicago-btn"> Chicago </button>
+            </form>
+        <div>
+        
+    </section>
+
+{% endblock %}
