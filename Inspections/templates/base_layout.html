@@ -10,13 +10,28 @@
         {% endblock %}
     </title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Goudy+Bookletter+1911&family=Grenze+Gotisch:wght@100..900&family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jersey+20&family=Lilita+One&family=Meow+Script&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <script src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
    
+    <h1 class="title"> Restaurant Inspections </h1>
+   
     <main>
+
+            {% comment %} {% load static %}
+            <img class="chefImg" src="{% static 'css/images/chef.png' %}" alt="chef Logo"> {% endcomment %}
+        
+        
+
         {% block content %}
         {% endblock %}
     </main>
 </body>
 </html>
+
+<!-- .venv\Scripts\Activate.ps1
+    py manage.py runserver (have to be inside Inspections) RestaurantInspections/Inspections
+-->

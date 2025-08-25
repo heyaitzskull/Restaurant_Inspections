@@ -1,0 +1,109 @@
+{% extends 'base_layout.html'%}
+
+{% block title %}
+
+    Map of Chicago Restaurants
+
+{% endblock%}
+
+{% block content %}
+
+
+    <!-- this is the leaflet CSS-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+    <!-- this is the leaflet JS-->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'restaurants:chi' %}">Search</a>
+        <a href="{% url 'restaurants:chi_map' %}">Map</a>
+
+    </nav>
+    <br>
+
+    <p1> Click on a restaurant marker to view its inspection details. Popups show the latest inspection result and allow you to access the full report.</p1>
+    <p2> Each restaurant is marked on the map based on inspection results. Red = fail,  Green = pass,  Yellow = All other conditions </p2>
+    
+    <div id="map" style="height:520px; width:80%; border-radius:20px; border: 5px solid black"></div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var map = L.map('map').setView([41.8781, -87.6298], 12);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            let markersGroup = L.layerGroup().addTo(map);
+
+            function loadRestaurants() {
+                // Get current map bounds
+                let bounds = map.getBounds();
+                let sw = bounds.getSouthWest();
+                let ne = bounds.getNorthEast();
+
+                // Build query parameters
+                let params = new URLSearchParams({
+                    southWestLat: sw.lat,
+                    southWestLng: sw.lng,
+                    northEastLat: ne.lat,
+                    northEastLng: ne.lng,
+                });
+
+                fetch(`/restaurants/restaurants-in-bounds/?${params.toString()}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        markersGroup.clearLayers();
+
+                        data.forEach(r => {
+                            if (r.lattitude && r.longitude) {
+                                // Choose color based on results
+                                let color = 'yellow';
+                                if (r.results && r.results.toLowerCase() === 'pass') color = '#3fce07ff';
+                                else if (r.results && r.results.toLowerCase() === 'fail') color = 'red';
+                                let url = `/restaurants/chicago/${r.id}/`;
+
+                                let marker = L.circleMarker([r.lattitude, r.longitude], {
+                                    color: color,
+                                    fillColor: color,
+                                    fillOpacity: 0.5,
+                                    radius: 6,
+                                }).bindPopup(`
+                                    <a href="${url}">
+                                        <b>${r.aka_name}</b><br>${r.address}<br>Result: ${r.results}
+                                    </a>`
+                                    );
+
+                                markersGroup.addLayer(marker);
+                            }
+                        });
+                    })
+                    .catch(err => console.error('Failed to load restaurants:', err));
+            }
+
+            // load restaurants initially
+            loadRestaurants();
+
+            // reload when map view changes (pan or zoom)
+            map.on('moveend', loadRestaurants);
+        });
+        </script>
+
+
+
+
+{% endblock%}
+

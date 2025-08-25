@@ -4,6 +4,8 @@ import csv
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from restaurants.models import Restaurant
+from datetime import datetime
+
 
 
 class Command(BaseCommand):
@@ -24,6 +26,13 @@ class Command(BaseCommand):
             reader = csv.DictReader(f)
             for row in reader:
                 try:
+
+                    inspection_date_str = row["Inspection Date"]
+                    if inspection_date_str:
+                        inspection_date = datetime.strptime(inspection_date_str, "%m/%d/%Y").date()
+                    else:
+                        inspection_date = None
+
                     obj = Restaurant(
                         inspection_id=int(row["Inspection ID"]) if row["Inspection ID"] else None,
                         dba_name=row["DBA Name"],
@@ -35,7 +44,7 @@ class Command(BaseCommand):
                         city=row["City"],
                         state=row["State"],
                         zip=row["Zip"],
-                        inspection_date=row["Inspection Date"],  # Could parse if needed
+                        inspection_date=inspection_date,
                         inspection_type=row["Inspection Type"],
                         results=row["Results"],
                         violations=row["Violations"],

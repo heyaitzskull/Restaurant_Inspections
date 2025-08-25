@@ -7,8 +7,93 @@ Home
 {% endblock%}
 
 {% block content %}
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'restaurants:chi' %}">Search</a>
+        <a href="{% url 'restaurants:chi_map' %}">Map</a>
 
-    <h1> {{ restaurant.dba_name }} </h1>
+    </nav>
+    <br>
+
+    <h1> 
+        <span class="rest-name" > {{ restaurant.dba_name }}, </span> 
+        
+        {{ restaurant.address }} 
+    </h1>
+
+
+
+    <label style="font-size:17px;" for="years">Choose a year:</label>
+
+        <select name="years" id="years">
+            {% for r in restaurant_all%}
+                <option value="{{ r.inspection_date|date:'Y-m-d' }}"> {{ r.inspection_date }} </option>
+            {% endfor %} 
+
+        </select>
+    
+    <div class="restaurant_by_date">
+    
+    </div>
+    
+    <script>
+
+        const restaurantData = [
+
+            //storing restaurant data into Javascript as an array (JSON)
+            {% for r in restaurant_all %}
+                {
+                    date: "{{ r.inspection_date|date:'Y-m-d'|escapejs }}",
+                    results: "{{ r.results|escapejs }}",
+                    type: "{{r.inspection_type|escapejs}}",
+                    violations: "{{ r.violations|escapejs }}",
+                },
+            {% endfor %}
+        ];
+
+        //getting the select element and the div where results will be displayed
+        const selectEl = document.getElementById('years');
+        const restaurantByDateDiv = document.querySelector('.restaurant_by_date');
+
+        //adding an event listener to see which option is selected and storing the data into variables
+        selectEl.addEventListener('change', function () {
+            const selectedDate = this.value;
+            const match = restaurantData.find(r => r.date === selectedDate);
+
+            
+            let color = "rgba(145, 95, 25, 1)"; // default
+            if (match.results === "pass" || match.results === "Pass") {
+                color = "rgb(48, 171, 40)";
+            } else if (match.results === "fail" || match.results === "Fail") {
+                color = "red";
+            }
+
+            let newStr = "No violations  :)";
+            if (match.violations) {
+                newStr = match.violations.split("|").join("<br><br>");
+                //newStr =  match.violations.split("- Comments").join("<br> Comments: ")
+            } 
+
+
+            restaurantByDateDiv.innerHTML = match ? `
+                <p style="color:${color}; font-size:20px">${match.results}</p>
+                <p style="text-align:left; color: rgba(170, 0, 0, 1); font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">${newStr}</p>
+            ` : '';
+        });
+
+
+        // Trigger once at page load so first date's results show
+        selectEl.dispatchEvent(new Event('change'));
+
+    </script>
+    <br>
+    <br>
+    <br>
+
+        
+
+    
+
     
 
 {% endblock %}

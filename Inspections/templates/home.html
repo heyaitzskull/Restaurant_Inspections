@@ -8,17 +8,31 @@ Home
 
 {% block content %}
 
-    <h1> Welcome to Restaurant Inspections </h1>
-    <h2> To start, choose your city </h2>
+     {% load static %}
+        <img class="foodImg" src="{% static 'css/images/food_inspection.jpeg' %}" alt="Food Inspection cartoon">
 
-    <section>
-        <div class='city-btns'>
-            <form action="{% url 'restaurants:chi' %}" method="post">
-                {% csrf_token %}
-                <button class="chicago-btn"> Chicago </button>
+    <p class="description"> With data from the Chicago, Los Angeles, and New York City health departments, you can search for restaurants and view their inspection results as well as history. </p>
+    
+    <div class="home-container">
+
+        <div class="button-container">
+            <h2> To start, choose your city </h2>
+            <form method="get" action="{% url 'restaurants:chi' %}">
+                <button type="submit" class="chicago-btn">Chicago</button>
             </form>
-        <div>
         
-    </section>
+            <form method="get" action="{% url 'restaurants:chi' %}">
+                <button type="submit" class="la-btn">Los Angeles</button>
+            </form>
 
+            <form method="get" action="{% url 'restaurants:chi' %}">
+                <button type="submit" class="nyc-btn">New York City</button>
+            </form>
+        </div>
+
+       
+    
+    </div>
+
+    
 {% endblock %}

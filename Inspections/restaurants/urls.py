@@ -12,5 +12,11 @@ urlpatterns = [
     path('chicago/', views.chicago, name="chi"),
 
     # this is for the individual restaurant that was clicked
-    path('chicago/<int:restaurant_id>/', views.chi_rest, name="chi_rest")
+    path('chicago/<int:restaurant_id>/', views.chi_rest, name="chi_rest"),
+
+    # this is for the chicago map
+    path('chicago/map/', views.chi_map, name="chi_map"),
+
+    path('restaurants-in-bounds/', views.restaurants_in_bounds, name='restaurants_in_bounds'),
+
 ]

@@ -1,80 +1,382 @@
-html, body {
+html {
   height: 100%;
   margin: 0;
+  font-family: Almendra;
+  
 }
 
 body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* ensures full viewport */
-  
+  margin: 10px;  
+  margin-top: 0;
+  background-color: rgb(250, 250, 250);
 }
 
 main {
-  background-color: aliceblue;
-  width: 900px;
-  height: 700px;
-  border: 5px solid rgb(33, 55, 115);
-  border-radius: 20px;
-  align-items: center;    /* center horizontally */
-  justify-content: center;
-
+    background-color: rgb(250, 250, 250);
+    width: 100%;         /* take up most of the screen */
+    max-width: 1000px;  /* but don’t grow past 1000px */
+    min-width: 320px;   /* don’t shrink too tiny */
+    height: auto;       /* let height expand naturally */
+    /* margin: 20px auto;  center horizontally */
+    margin-top: 0;
+    border: none;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+nav a {
+    text-decoration: none;
+    margin: 20px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(242, 183, 230);
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    width: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-h1 {
-    color: rgb(178, 103, 178);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-top: 5%;
-    text-align: center;
+nav a:hover {
+
+    background-color: rgb(215, 136, 198);
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* nav {
+    background-color: aqua;
+    width: auto;
+    height: auto;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px;
+    
+} */
+
+.title {
+    color: rgb(0, 0, 0);
+    font-family: Grenze Gotisch, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: left;
+    font-size: 40px;
+    align-items: left;
 }
 h2 {
-    color: rgb(133, 71, 78);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(194, 47, 47);
+    font-family: Grenze Gotisch, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
 
 }
+
+p {
+    font-weight: bold;
+    text-align: center;
+    color: rgb(100, 89, 89);
+}
+
+p1 {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 5px;
+    width: 80%;
+    text-align: center;
+    color: rgb(0, 159, 227);
+}
+
+p2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 80%;
+    text-align: center;
+    color:black;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* aligns title to the left */
+    width: 100%;                 /* take full width of main */
+    margin-bottom: 20px;         /* spacing from rest of content */
+}
+
+.description {
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+.chefImg {
+    display: block;
+    width: auto;
+    height: 50px;
+    border-radius: 15px;
+    margin-right: 20px;
+}
 .chicago-btn {
-    width: 300px;
+    width: 230px;
     height: 50px;
     background-color: rgb(118, 198, 238);
     font-size: large;
     color:rgb(255, 255, 255);
     font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    border: 5px solid rgb(50, 50, 146);
-    border-radius: 15px;
+    font-family: Almendra;
     align-items: center;
     justify-content: center;
     display: flex;
     text-align: center;
+    margin: 6px;
+    border: none;
+    border-radius: 15px;
 }
 .chicago-btn:hover {
-    
-    background-color: rgb(95, 159, 192);
+    background-color: rgb(74, 177, 229);
     font-size: large;
     color:rgb(255, 255, 255);
     font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    border: 5px solid rgb(8, 8, 22);
+    font-family: Almendra;    
+    border: none;
     border-radius: 15px;
-    
+    cursor: pointer; 
 }
 
-.city-btns {
-    display: flex;
+.la-btn {
+    width: 230px;
+    height: 50px;
+    background-color: rgb(244, 200, 112);
+    font-size: large;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: Almendra;
+    align-items: center;
     justify-content: center;
-    margin-top: 150px;
+    display: flex;
+    text-align: center;
+    margin: 6px;
+    border: none;
+    border-radius: 15px;
+}
+.la-btn:hover {
+    background-color: rgb(236, 175, 77);
+    font-size: large;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: Almendra;    
+    border: none;
+    border-radius: 15px;
+    cursor: pointer; 
 }
 
-.search-input {
+.nyc-btn {
+    width: 230px;
+    height: 50px;
+    background-color: rgb(110, 228, 144);
+    font-size: large;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: Almendra;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    margin: 10px;
+    border: none;
+    border-radius: 15px;
+}
+.nyc-btn:hover {
+    background-color: rgb(70, 219, 117);
+    font-size: large;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: Almendra;    
+    border: none;
+    border-radius: 15px;
+    cursor: pointer; 
+}
+
+.search-btn {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(167, 226, 255);
+    font-size: large;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-family: Almendra;
+    text-align: center;
+    margin: 10px;
+    border: none;
+    border-radius: 15px;
+}
+
+.search-btn:hover {
+    cursor: pointer;
+    background-color: rgb(106, 197, 243);
+    color: white;
+}
+
+.nyc-btn:hover {
+    background-color: rgb(70, 219, 117);
+    font-size: large;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: Almendra;    
+    border: none;
+    border-radius: 15px;
+    cursor: pointer; 
+
+}
+
+.search-conainer {
     display:flex; 
-    flex-direction: col;
-    margin-top: 20px;
+    flex-direction: column;
     margin-bottom: 20px;
     margin-left: 50px;
 }
 
+.search-input {
+    width: 200px;
+    height: 40px;
+    font-size: medium;
+    border-radius: 10px;
+    border: 2px solid rgb(180, 175, 175);
+    margin: 10px;
+    padding-left: 10px;
+    font-family: Almendra;
+}
+
+.search-input:focus {
+    outline: none;
+    width: 200px;
+    height: 37px;
+    /* border-color: rgb(167, 226, 255); */
+    border: 5px solid rgb(167, 226, 255);
+}
+
 .restaurant {
     margin-left: 50px;
+}
+
+#map { 
+    
+    height: 600px; 
+    width: 100%;
+}
+
+.foodImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 250px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;   
+    text-align: center; 
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eating-img-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.jojoImg {
+    display: block;
+    width: auto;
+    height: 250px;
+    border-radius: 15px;
+    margin-top: 20px;
+    align-items: right;
+}
+
+@media (max-width: 900px) {
+    /* .eating-img-container {
+        position: static;      
+        text-align: center;     
+        margin-top: 20px;       
+        bottom: 0;
+    } */
+
+    /* .jojoImg {
+        max-width: 90%;         
+        height: auto;
+        margin-top: 50px;
+    } */
+
+    /* makes the img disappear  */
+    .eating-img-container {
+        display: none;
+    }
+    
+}
+
+.restaurant-search {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 7px;
+    max-width: 550px;
+    width: 100%;          /* let it fill available width */
+    margin-left: auto;    /* center horizontally */
+    margin-right: auto;
+    margin: 0 auto;       /* keeps the block centered */
+    text-align: left;     /* aligns the text inside left */
+}
+
+.each-restaurant {
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+    
+}
+
+.each-restaurant:hover {
+    color:rgb(119, 119, 119);
+}
+
+.rest-name {
+    color: rgb(48, 171, 40);
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+
+}
+
+.pagination {
+    font-weight: bold;
+    color: rgb(18, 18, 158);
+}
+
+.pchild {
+    font-weight: 400;
+    color: rgb(200, 0, 0);
+}
+
+#years {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px;
+    height: 35px;
+    width: 150px;
+    border-radius: 10px;
+    border: 2px solid;
+    margin-top: 5px;
+    margin-bottom: 10px;
+
 }

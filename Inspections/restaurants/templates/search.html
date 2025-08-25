@@ -1,0 +1,89 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+    Search Restaurants
+{% endblock %}
+
+{% block content %}
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'restaurants:chi' %}">Search</a>
+        <a href="{% url 'restaurants:chi_map' %}">Map</a>
+
+    </nav>
+
+    <br>
+
+    <p>Search for restaurants by name and/or address. </p>
+
+    <div class="search-container">
+        <form action="{% url 'restaurants:chi' %}" method="get">
+            <input type="text" name="q" class="search-input" placeholder="Type name..." value="{{ q }}">
+            <input type="text" name="p" class="search-input" placeholder="Type Address..." value="{{ p }}">
+            <button class="search-btn"> Search </button>
+        </form>
+    </div>
+    <br>
+
+  {% if restaurant %}
+
+
+      {% for r in page_obj %}
+          <div class="restaurant-search">
+              <!--{{ r.inspection_date }}:-->
+              <a class="each-restaurant" href="{% url 'restaurants:chi_rest' r.id %}">
+                  <span class="rest-name">{{ r.dba_name }}: </span> {{ r.address }}, {{ r.city }}, {{ r.state }} {{ r.zip }}
+              </a>
+          </div>
+          <br>
+      {% endfor %}
+
+
+  {% elif q or p %}
+    <br>
+        {%if p and q%}
+            <p>No results found for "{{ q }}" at "{{ p }}".</p>
+        {%elif q%}
+            <p>No results found for "{{ q }}".</p>
+        {%else%}
+            <p>No results found for "{{ p }}".</p>
+        {%endif%}
+        
+      <p2>Double check your spelling or try searching with different keywords.</p2>
+  
+      {% endif %}
+
+    {%if not restaurant%}
+            {% if not p and not q %}
+                <span style="color: grey;">Waiting for search...</span>
+            {% endif %}
+        
+    {% else %}
+        
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                <a class="pchild" href="?page=1{% if q %}&q={{ q }}{% endif %}{% if p %}&p={{ p }}{% endif %}">&laquo; first</a>
+                <a class="pchild" href="?page={{ page_obj.previous_page_number }}{% if q %}&q={{ q }}{% endif %}{% if p %}&p={{ p }}{% endif %}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                <a class="pchild" href="?page={{ page_obj.next_page_number }}{% if q %}&q={{ q }}{% endif %}{% if p %}&p={{ p }}{% endif %}">next</a>
+                <a class="pchild" href="?page={{ page_obj.paginator.num_pages }}{% if q %}&q={{ q }}{% endif %}{% if p %}&p={{ p }}{% endif %}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    {%endif%}
+    
+    <div class="eating-img-container">
+        {% load static %}
+        <img class="jojoImg" src="{% static 'css/images/jojo_eating.png' %}" alt="Eating out cartoon">
+    </div>
+
+
+{% endblock %}
