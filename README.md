@@ -23,7 +23,7 @@ cd restaurant-inspections
 
 **Create a virtual environment and install dependencies:**
 python -m venv venv<br>
-source venv/bin/activate  (On Windows: venv\Scripts\activate<br>)
+source venv/bin/activate  (On Windows: venv\Scripts\activate)<br>
 pip install -r requirements.txt
 
 **Apply migrations and run the server:**
