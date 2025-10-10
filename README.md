@@ -18,15 +18,15 @@ ETL pipeline for migrating 400,000+ records with data cleaning, validation, and 
 **Installation**
 
 **Clone the repository:**
-git clone <repository_url>
+git clone <repository_url><br>
 cd restaurant-inspections
 
 **Create a virtual environment and install dependencies:**
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+python -m venv venv<br>
+source venv/bin/activate  # On Windows: venv\Scripts\activate<br>
 pip install -r requirements.txt
 
 **Apply migrations and run the server:**
-python manage.py migrate
-python manage.py runserver
+python manage.py migrate<br>
+python manage.py runserver<br>
 
