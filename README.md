@@ -1,4 +1,5 @@
-## Restaurant Inspections Website
+# Restaurant Inspections Website
+Created by: Prativa Khatiwada
 
 A full-stack web application that consolidates restaurant inspection data across multiple cities, providing a dynamic, searchable interface with interactive maps.
 
