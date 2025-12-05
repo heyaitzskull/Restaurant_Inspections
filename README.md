@@ -30,11 +30,11 @@ pip install -r requirements.txt OR pip install django
 python manage.py migrate<br>
 python manage.py runserver<br>
 
-## Homepage
+### Homepage
 <img width="3839" height="1856" alt="image" src="https://github.com/user-attachments/assets/81ca2878-6c8d-47d1-80b3-fc3bd4b769d1" />
 
 
-## Search Restaurant
+### Search Restaurant
 **With only name**
 <img width="3840" height="1866" alt="image" src="https://github.com/user-attachments/assets/7739170f-8cd0-4f9b-88ed-a8b3b5d84c2f" />
 
@@ -42,11 +42,11 @@ python manage.py runserver<br>
 <img width="3840" height="1862" alt="image" src="https://github.com/user-attachments/assets/290d574c-a4bc-4124-9bfa-d6e053ecfec9" />
 
 
-## Restaurant Inspection Details
+### Restaurant Inspection Details
 <img width="3840" height="1867" alt="image" src="https://github.com/user-attachments/assets/bbe8067e-262c-49b3-b62f-e1ba57cc0297" />
 
 
-**Map**
+### Map
 <img width="3840" height="1867" alt="image" src="https://github.com/user-attachments/assets/a21c16cf-7049-4d01-a9ea-caec8c94669c" />
 
 <img width="3840" height="1868" alt="image" src="https://github.com/user-attachments/assets/2f37e4e3-1a5b-4499-9bfc-23a40643e9d1" />
