@@ -7,13 +7,17 @@
 {% block content %}
 
     <nav>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'restaurants:chi' %}">Search</a>
-        <a href="{% url 'restaurants:chi_map' %}">Map</a>
+        <a href="{% url 'home' %}">
+            {% load static %}
+            <img class="homeImg" src="{% static 'css/images/home.png' %}" alt="Home icon" title="Home">
+        </a>
+
+        <a href="{% url 'restaurants:chi_map' %}">
+            {% load static %}
+            <img class="mapImg" src="{% static 'css/images/map.png' %}" alt="Map icon" title="Chicago Map">
+        </a>
 
     </nav>
-
-    <br>
 
     <p>Search for restaurants by name and/or address. </p>
 
@@ -33,7 +37,7 @@
           <div class="restaurant-search">
               <!--{{ r.inspection_date }}:-->
               <a class="each-restaurant" href="{% url 'restaurants:chi_rest' r.id %}">
-                  <span class="rest-name">{{ r.dba_name }}: </span> {{ r.address }}, {{ r.city }}, {{ r.state }} {{ r.zip }}
+                  <span class="rest-name">{{r.dba_name }}: </span> {{ r.address }}, {{ r.city }}, {{ r.state }} {{ r.zip }}
               </a>
           </div>
           <br>
@@ -82,7 +86,7 @@
     
     <div class="eating-img-container">
         {% load static %}
-        <img class="jojoImg" src="{% static 'css/images/jojo_eating.png' %}" alt="Eating out cartoon">
+        <img class="jojoImg" src="{% static 'css/images/jojo_eating.png' %}" alt="Eating out cartoon" title="Jojo Character Eating Image">
     </div>
 
 

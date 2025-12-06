@@ -25,15 +25,21 @@
 
 
     <nav>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'restaurants:chi' %}">Search</a>
-        <a href="{% url 'restaurants:chi_map' %}">Map</a>
+        <a href="{% url 'home' %}">
+            {% load static %}
+            <img class="homeImg" src="{% static 'css/images/home.png' %}" alt="Home icon" title="Home">
+        </a>
+
+        <a href="{% url 'restaurants:chi' %}">
+            {% load static %}
+            <img class="searchImg" src="{% static 'css/images/search.png' %}" alt="Search icon" title="Search">
+        </a>
 
     </nav>
-    <br>
+   
 
     <p1> Click on a restaurant marker to view its inspection details. Popups show the latest inspection result and allow you to access the full report.</p1>
-    <p2> Each restaurant is marked on the map based on inspection results. Red = fail,  Green = pass,  Yellow = All other conditions </p2>
+    
     
     <div id="map" style="height:520px; width:80%; border-radius:20px; border: 5px solid black"></div>
 
@@ -101,6 +107,8 @@
             map.on('moveend', loadRestaurants);
         });
         </script>
+
+        <p2> Each restaurant is marked on the map based on inspection results. Red = fail,  Green = pass,  Yellow = All other conditions </p2>
 
 
 

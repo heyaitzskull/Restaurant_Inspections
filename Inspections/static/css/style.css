@@ -31,26 +31,41 @@ main {
 }
 nav a {
     text-decoration: none;
-    margin: 20px;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(242, 183, 230);
+
+    /* color: rgb(255, 255, 255); */
+    background-color: rgb(220, 220, 220);
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 100%;
     font-weight: bold;
-    width: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* width: 50px; */
+    /* padding-left: 10px;
+    padding-right: 10px; */
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
 }
 
 nav a:hover {
 
-    background-color: rgb(215, 136, 198);
+    background-color: rgb(255, 183, 239);
     cursor: pointer;
 }
 
 a {
     text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.homeImg, .mapImg, .searchImg {
+    display: block;
+    width: auto;
+    height: 35px;
+    border-radius: 10px;
+    
 }
 
 /* nav {
@@ -87,10 +102,11 @@ p {
 p1 {
     font-weight: bold;
     font-size: 16px;
-    margin-top: 5px;
+    margin-top: 15px;
     width: 80%;
     text-align: center;
     color: rgb(0, 159, 227);
+    margin-bottom: 5px;
 }
 
 p2 {
@@ -380,3 +396,5 @@ p2 {
     margin-bottom: 10px;
 
 }
+
+

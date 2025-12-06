@@ -8,19 +8,29 @@ Home
 
 {% block content %}
     <nav>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'restaurants:chi' %}">Search</a>
-        <a href="{% url 'restaurants:chi_map' %}">Map</a>
+        <a href="{% url 'home' %}">
+            {% load static %}
+            <img class="homeImg" src="{% static 'css/images/home.png' %}" alt="Home icon" title="Home">
+        </a>
+
+        <a href="{% url 'restaurants:chi' %}">
+            {% load static %}
+            <img class="searchImg" src="{% static 'css/images/search.png' %}" alt="Search icon" title="Search">
+        </a>
+
+        <a href="{% url 'restaurants:chi_map' %}">
+            {% load static %}
+            <img class="mapImg" src="{% static 'css/images/map.png' %}" alt="Map icon" title="Chicago Map">
+        </a>
 
     </nav>
-    <br>
+    {% comment %} <br> {% endcomment %}
 
     <h1> 
         <span class="rest-name" > {{ restaurant.dba_name }}, </span> 
         
         {{ restaurant.address }} 
     </h1>
-
 
 
     <label style="font-size:17px;" for="years">Choose a year:</label>
